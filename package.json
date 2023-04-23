@@ -1,0 +1,21 @@
+{
+  "name": "rinku",
+  "version": "1.0.0",
+  "description": "Proyecto Rinku, que forma parte del Code Challenge para Fullstack Sr de Coppel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rinku",
+    "fullstack",
+    "sr",
+    "coppel"
+  ],
+  "author": "Luis Eduardo Villela Zavala",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
