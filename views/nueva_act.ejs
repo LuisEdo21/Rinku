@@ -12,71 +12,157 @@
     <div class="container">
         <h3 class="title-centered">Crear Nueva Actividad</h3>
 
-        <form action="">
+        <form method="POST" action="/addNuevaActividad">
             <div class="mb-3">
-                <label for="inNumEmp">Número de Empleado: </label>
-                <input type="text" class="form-control" id="inNumEmp">
+                <label for="inNumEmp"><b>Número de Empleado: </b></label>
+                <select class="form-select" name="inNumEmp" id="inNumEmp" onchange="getDatosEmpleado(this.value)">
+                    <option selected>Seleccione un número de empleado</option>
+                    <%
+                        let arrayNumEmp = []
+                        for(let i=0; i<params.length; i++)
+                        {
+                            arrayNumEmp.push(params[i].idEmp)
+                        }
+                        for(let i=0; i< arrayNumEmp.length; i++) { 
+                    %>
+                        <option value="<%= JSON.stringify(params[i]) %>"><%= arrayNumEmp[i] %></option>
+                    <% } %>
+                </select>
             </div>
             <div class="mb-3">
-                <label for="inNombre">Nombre(s): </label>
-                <!-- NOTA: Analizar cómo obtener Nombre, Apellido y Rol desde la BD. -->
+                <label for="inNombre"><b>Nombre(s): </b></label>
+                <input type="text" readonly class="form-control-plaintext" name="inNombre" id="inNombre">
             </div>
             <div class="mb-3">
-                <label for="inApellido">Apellido(s): </label>
-                <!-- NOTA: Analizar cómo obtener Nombre, Apellido y Rol desde la BD. -->
+                <label for="inApellido"><b>Apellido(s): </b></label>
+                <input type="text" readonly class="form-control-plaintext" name="inApellido" id="inApellido">
             </div>
             <div class="mb-3">
-                <label for="rolEmpleado">Rol Asignado: </label>
-                <!-- NOTA: Analizar cómo obtener Nombre, Apellido y Rol desde la BD. -->
+                <label for="rolEmpleado"><b>Rol Asignado: </b></label>
+                <input type="text" readonly class="form-control-plaintext" name="rolEmpleado" id="rolEmpleado">
             </div>
             <div class="mb-3">
-                <label for="inMes">Mes trabajado: </label>
-                <input type="text" class="form-control" id="inMes">
+                <label for="bonoBasePorHora"><b>Bono Base por Hora: </b></label>
+                <input type="text" readonly class="form-control-plaintext" name="bonoBasePorHora" id="bonoBasePorHora">
             </div>
             <div class="mb-3">
-                <label for="inAnio">Año trabajado: </label>
-                <input type="text" class="form-control" id="inAnio">
+                <label for="inMes"><b>Mes trabajado: </b></label>
+                <input type="text" class="form-control" name="inMes" id="inMes">
             </div>
             <div class="mb-3">
-                <label for="inHorasTrab">Horas Trabajadas: </label>
-                <input type="text" class="form-control" id="inHorasTrab">
+                <label for="inAnio"><b>Año trabajado: </b></label>
+                <input type="text" class="form-control" name="inAnio" id="inAnio">
             </div>
             <div class="mb-3">
-                <label for="inEntregas">Núm. de Entregas Realizadas: </label>
-                <input type="text" class="form-control" id="inEntregas">
+                <label for="inHorasTrab"><b>Horas Trabajadas: </b></label>
+                <input type="text" class="form-control" name="inHorasTrab" id="inHorasTrab" onchange="updateSueldo()">
             </div>
             <div class="mb-3">
-                <label for="inSueldoBase">Sueldo Base: </label>
+                <label for="inEntregas"><b>Núm. de Entregas Realizadas: </b></label>
+                <input type="text" class="form-control" name="inEntregas" id="inEntregas" onchange="updateSueldo()">
+            </div>
+            <div class="mb-3">
+                <label for="inSueldoBase"><b>Sueldo Base: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Multiplicar $30 x el núm. de horas trabajadas) -->
+                <input type="text" readonly class="form-control-plaintext" name="inSueldoBase" id="inSueldoBase">
             </div>
             <div class="mb-3">
-                <label for="inBonoEntregas">Bono por Entregas Realizadas: </label>
+                <label for="inBonoEntregas"><b>Bono por Entregas Realizadas: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Multiplicar $5 x el núm. de entregas realizadas) -->
+                <input type="text" readonly class="form-control-plaintext" name="inBonoEntregas" id="inBonoEntregas">
             </div>
             <div class="mb-3">
-                <label for="inBonoHoras">Bono por Horas Trabajadas: </label>
+                <label for="inBonoHoras"><b>Bono por Horas Trabajadas: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Multiplicar el número de horas trabajadas x $10 si es chofer, $5 si es cargador, $0 si es auxiliar) -->
+                <input type="text" readonly class="form-control-plaintext" name="inBonoHoras" id="inBonoHoras">
             </div>
             <div class="mb-3">
-                <label for="inISR">ISR: </label>
+                <label for="inISR"><b>ISR: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Sumar Sueldos + Bonos; si es menor a $10,000 -> 9% de ISR; de lo contrario 12%) -->
+                <input type="text" readonly class="form-control-plaintext" name="inISR" id="inISR">
             </div>
             <div class="mb-3">
-                <label for="inMontoISR">Monto de ISR: </label>
+                <label for="inMontoISR"><b>Monto de ISR: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Sumar Sueldos + Bonos, calcular el porcentaje dependiendo si es el 9% o el 12%) -->
+                <input type="text" readonly class="form-control-plaintext" name="inMontoISR" id="inMontoISR">
             </div>
             <div class="mb-3">
-                <label for="inValesDesp">Vales de Despensa: </label>
+                <label for="inValesDesp"><b>Vales de Despensa: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Sumar Sueldos + Bonos, calcular el 4%) -->
+                <input type="text" readonly class="form-control-plaintext" name="inValesDesp" id="inValesDesp">
             </div>
             <div class="mb-3">
-                <label for="inSueldoNeto">SUELDO NETO: </label>
+                <label for="inSueldoNeto"><b>SUELDO NETO: </b></label>
                 <!-- NOTA: Este es un valor autocalculado (Sumar Sueldo Base, Bonos y Vales de Despensa; restar Monto ISR) -->
+                <input type="text" readonly class="form-control-plaintext" name="inSueldoNeto" id="inSueldoNeto">
             </div>
             <button type="reset" class="btn btn-danger">Limpiar Formulario</button>
             <button type="submit" class="btn btn-primary">Registrar Actividad</button>
         </form>
     </div>
+
+    <script type="text/javascript">
+        let getDatosEmpleado = function(params) 
+        {
+            let empObj = JSON.parse(params)
+            console.log(params)
+            let nombreEmp = empObj.nombreEmp
+            let apellidosEmp = empObj.apellidos 
+            let idRol = empObj.idRol 
+            let nombreRol = empObj.nombreRol 
+            let bonoEmp = empObj.bono 
+
+            document.getElementById('inNombre').value = nombreEmp
+            document.getElementById('inApellido').value = apellidosEmp
+            document.getElementById('rolEmpleado').value = idRol + " - " + nombreRol
+            document.getElementById('bonoBasePorHora').value = "$" + bonoEmp
+        }
+
+        let updateSueldo = function()
+        {
+            let NumHorasTrabajadas = document.getElementById('inHorasTrab').value
+            let NumEntregasRealizadas = document.getElementById('inEntregas').value
+            let sueldoBasePorHora = 30
+            let bonoBasePorHora = document.getElementById('bonoBasePorHora').value
+
+            let sueldoBruto = 0
+            let sueldoBaseMensual = 0
+            let BonoEntregas = 0
+            let BonoHorasTrabajadas = 0
+            let ISR = 9
+            let montoISR = 0 
+            let valesDespensa = 0
+            let sueldoNeto = 0
+
+            if(NumHorasTrabajadas != "" && NumEntregasRealizadas != "")
+            {
+                NumHorasTrabajadas = parseInt(NumHorasTrabajadas)
+                NumEntregasRealizadas = parseInt(NumEntregasRealizadas)
+
+                sueldoBaseMensual = sueldoBasePorHora * NumHorasTrabajadas 
+                BonoEntregas = NumEntregasRealizadas * 5
+                BonoHorasTrabajadas = parseInt(bonoBasePorHora.substring(1)) * NumHorasTrabajadas
+                sueldoBruto = sueldoBaseMensual + BonoEntregas + BonoHorasTrabajadas 
+
+                if(sueldoBruto > 10000)
+                {
+                    ISR = 12
+                }
+
+                montoISR = (sueldoBruto * ISR) / 100
+                valesDespensa = sueldoBruto * 0.04 
+                sueldoNeto = sueldoBruto + valesDespensa - montoISR
+            }
+
+            document.getElementById('inSueldoBase').value = sueldoBaseMensual.toFixed(2)
+            document.getElementById('inBonoEntregas').value = BonoEntregas.toFixed(2)
+            document.getElementById('inBonoHoras').value = BonoHorasTrabajadas.toFixed(2)
+            document.getElementById('inISR').value = ISR
+            document.getElementById('inMontoISR').value = montoISR.toFixed(2)
+            document.getElementById('inValesDesp').value = valesDespensa.toFixed(2)
+            document.getElementById('inSueldoNeto').value = sueldoNeto.toFixed(2)
+        }
+    </script>
 
     <footer>
         <%- include('partials/footer'); %>

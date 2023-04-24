@@ -44,12 +44,12 @@
                         <td><%= params[i].anio %></td>
                         <td><%= params[i].horasTrabajadas %></td>
                         <td><%= params[i].numEntregas %></td>
-                        <td>$<%= params[i].sueldoBase %></td>
-                        <td>$<%= params[i].bonoEntregas %></td>
-                        <td>$<%= params[i].bonoHoras %></td>
-                        <td>-$<%= params[i].isr %></td>
-                        <td>$<%= params[i].vales %></td>
-                        <td>$<%= params[i].sueldoNeto %></td>
+                        <td>$<%= params[i].sueldoBase.toFixed(2) %></td>
+                        <td>$<%= params[i].bonoEntregas.toFixed(2) %></td>
+                        <td>$<%= params[i].bonoHoras.toFixed(2) %></td>
+                        <td>-$<%= params[i].isr.toFixed(2) %></td>
+                        <td>$<%= params[i].vales.toFixed(2) %></td>
+                        <td>$<%= params[i].sueldoNeto.toFixed(2) %></td>
                     </tr>
                 <% } %>
             </tbody>

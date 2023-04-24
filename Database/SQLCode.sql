@@ -97,7 +97,17 @@ BEGIN
 	SELECT * FROM Actividad;
 END //
 DELIMITER ;
-#CALL [Nombre del Procedimiento] ([Parámetros...])
+
+#Obtener el listado de empleados
+DELIMITER //
+CREATE PROCEDURE sp_obtenerEmpleados()
+BEGIN
+	SELECT e.idEmp, e.nombre AS nombreEmp, e.apellidos, e.idRol, r.nombre AS nombreRol, r.bono 
+	FROM Empleados e
+	INNER JOIN Roles r ON r.idRol = e.idRol;
+END //
+DELIMITER ;
 
 #Actualizar la actividad realizada por algún empleado: 
 
+#CALL [Nombre del Procedimiento] ([Parámetros...])

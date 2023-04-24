@@ -66,7 +66,24 @@ router.get('/', (req, res) => {
 
 // Página para crear un nuevo reporte de actividad
 router.get('/nueva_actividad', (req, res) => {
-    res.render('nueva_act.ejs', {})
+    const MySQLQuery = "CALL sp_obtenerEmpleados()";
+    
+    dbConnection.query(MySQLQuery, function(err, result) {
+        if (err)
+        {
+            res.send('ERROR: No fue posible realizar la conexión a la BD de Rinku - Luis Eduardo Villela Zavala')
+            throw err
+        }
+        else
+        {
+            console.log("=== LISTA DE EMPLEADOS A UTILIZAR ===")
+            let data = JSON.parse(JSON.stringify(result[0])) 
+            console.log(data)
+            res.render('nueva_act.ejs', {params: data})
+        }
+    })
+
+    //res.render('nueva_act.ejs', {})
 })
 
 // Página para crear un nuevo empleado
@@ -97,6 +114,33 @@ router.post('/addNuevoEmpleado', (req, res) => {
         }
 
         //res.status(200).json(req.body)
+    })
+})
+
+// POST /addNuevaActividad: Crea un nuevo registro de actividad para un empleado en particular y lo almacena en la base de datos.
+router.post('/addNuevaActividad', (req, res) => {
+    // Se obtienen los parámetros directamente del body.
+    const {inNumEmp, inNombre, inApellido, rolEmpleado, bonoBasePorHora, inMes, inAnio, inHorasTrab, inEntregas, inSueldoBase, inBonoEntregas, inBonoHoras, 
+        inISR, inMontoISR, inValesDesp, inSueldoNeto} = req.body
+
+
+    const DatosEmpOrig = JSON.parse(inNumEmp)
+
+    // Se declara la ejecución del Procedimiento Almacenado correspondiente
+    const MySQLQuery = "CALL crear_actividad(" + DatosEmpOrig.idEmp + ", " + rolEmpleado.substring(0, 1) + ", "+ inMes + ", "+ inAnio + ", "+ inHorasTrab + ", "+ inEntregas + ", "+ inSueldoBase + ", "+ inBonoEntregas + ", "+ inBonoHoras + ", "+ inMontoISR + ", "+ inValesDesp + ", "+ inSueldoNeto + ")";
+    console.log(MySQLQuery)
+    // Se inicializa la conexión a la base de datos y se intenta ejecutar el procedimiento almacenado.
+    dbConnection.query(MySQLQuery, function(err, result) {
+        if (err)
+        {
+            console.log("ERROR: ", err)
+            res.redirect("/error")
+        }
+        else
+        {
+            console.log(req.body)
+            res.redirect("/success")
+        }
     })
 })
 
