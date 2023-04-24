@@ -12,31 +12,31 @@
     <div class="container">
         <h3 class="title-centered">Crear Nuevo Empleado</h3>
 
-        <form action="">
+        <form method="POST" action="/addNuevoEmpleado">
             <div class="mb-3">
-                <label for="inNumEmp">Número de Empleado: </label>
-                <input type="text" class="form-control" id="inNumEmp">
+                <label for="numEmpleado">Número de Empleado: </label>
+                <input type="text" class="form-control" name="numEmpleado" id="numEmpleado">
             </div>
             <div class="mb-3">
-                <label for="inNombre">Nombre(s): </label>
-                <input type="text" class="form-control" id="inNombre">
+                <label for="nombreEmp">Nombre(s): </label>
+                <input type="text" class="form-control" name="nombreEmp" id="nombreEmp">
             </div>
             <div class="mb-3">
-                <label for="inApellido">Apellido(s): </label>
-                <input type="text" class="form-control" id="inApellido">
+                <label for="apellidoEmp">Apellido(s): </label>
+                <input type="text" class="form-control" name="apellidoEmp" id="apellidoEmp">
             </div>
             <div class="mb-3">
-                <label for="rolesEmpleado">Rol Asignado: </label>
+                <label for="idRol">Rol Asignado: </label>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="rolesEmpleado" id="rolChofer" checked>
+                    <input type="radio" class="form-check-input" name="idRol" id="rolChofer" value="1" checked>
                     <label class="form-check-label" for="rolChofer">1- Chofer</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="rolesEmpleado" id="rolCargador">
+                    <input type="radio" class="form-check-input" name="idRol" id="rolCargador" value="2">
                     <label class="form-check-label" for="rolCargador">2- Cargador</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="rolesEmpleado" id="rolAuxiliar">
+                    <input type="radio" class="form-check-input" name="idRol" id="rolAuxiliar" value="3">
                     <label class="form-check-label" for="rolAuxiliar">3- Auxiliar</label>
                 </div>
             </div>

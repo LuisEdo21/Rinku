@@ -32,22 +32,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <% 
+                    for(let i=0; i< params.length; i++) { 
+                %>
+                    <tr>
+                        <td><%= params[i].idEmp %></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><%= params[i].idRol %></td>
+                        <td><%= params[i].mes %></td>
+                        <td><%= params[i].anio %></td>
+                        <td><%= params[i].horasTrabajadas %></td>
+                        <td><%= params[i].numEntregas %></td>
+                        <td>$<%= params[i].sueldoBase %></td>
+                        <td>$<%= params[i].bonoEntregas %></td>
+                        <td>$<%= params[i].bonoHoras %></td>
+                        <td>-$<%= params[i].isr %></td>
+                        <td>$<%= params[i].vales %></td>
+                        <td>$<%= params[i].sueldoNeto %></td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
