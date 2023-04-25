@@ -13,17 +13,23 @@
         <h3 class="title-centered">Crear Nuevo Empleado</h3>
 
         <form method="POST" action="/addNuevoEmpleado">
-            <div class="mb-3">
-                <label for="numEmpleado"><b>Número de Empleado: </b></label>
-                <input type="text" class="form-control" name="numEmpleado" id="numEmpleado">
+            <div class="mb-3 row">
+                <label for="numEmpleado" class="col-sm-2 col-form-label"><b>Número de Empleado: </b></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="numEmpleado" id="numEmpleado">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="nombreEmp"><b>Nombre(s): </b></label>
-                <input type="text" class="form-control" name="nombreEmp" id="nombreEmp">
+            <div class="mb-3 row">
+                <label for="nombreEmp" class="col-sm-2 col-form-label"><b>Nombre(s): </b></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="nombreEmp" id="nombreEmp">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="apellidoEmp"><b>Apellido(s): </b></label>
-                <input type="text" class="form-control" name="apellidoEmp" id="apellidoEmp">
+            <div class="mb-3 row">
+                <label for="apellidoEmp" class="col-sm-2 col-form-label"><b>Apellido(s): </b></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="apellidoEmp" id="apellidoEmp">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="idRol"><b>Rol Asignado: </b></label>

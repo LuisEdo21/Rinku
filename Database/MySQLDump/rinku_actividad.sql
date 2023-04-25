@@ -1,0 +1,67 @@
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: rinku
+-- ------------------------------------------------------
+-- Server version	8.0.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `actividad`
+--
+
+DROP TABLE IF EXISTS `actividad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `actividad` (
+  `idAct` int NOT NULL AUTO_INCREMENT,
+  `idEmp` int NOT NULL,
+  `idRol` int NOT NULL,
+  `mes` int NOT NULL,
+  `anio` year NOT NULL,
+  `horasTrabajadas` int NOT NULL,
+  `numEntregas` int NOT NULL,
+  `sueldoBase` double NOT NULL,
+  `bonoEntregas` double NOT NULL,
+  `bonoHoras` double NOT NULL,
+  `isr` double NOT NULL,
+  `vales` double NOT NULL,
+  `sueldoNeto` double NOT NULL,
+  PRIMARY KEY (`idAct`),
+  UNIQUE KEY `idAct` (`idAct`),
+  KEY `idEmp` (`idEmp`),
+  KEY `idRol` (`idRol`),
+  CONSTRAINT `actividad_ibfk_1` FOREIGN KEY (`idEmp`) REFERENCES `empleados` (`idEmp`),
+  CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`idRol`) REFERENCES `roles` (`idRol`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `actividad`
+--
+
+LOCK TABLES `actividad` WRITE;
+/*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
+INSERT INTO `actividad` VALUES (1,10101010,1,3,2023,192,65,5760,325,1920,720.45,320.2,7604.75),(2,11111111,2,1,2023,192,50,5760,250,960,627.3,278.8,6621.5),(3,22222222,3,2,2023,170,40,5100,200,0,477,212,5035),(4,38383838,1,5,2022,188,300,5640,1500,1880,811.8,360.8,8569),(5,10101010,1,1,2023,192,650,5760,3250,1920,1311.6,437.2,10055.6),(6,11111111,2,3,2023,180,340,5400,1700,900,720,320,7600),(7,44444444,2,3,2023,165,88,4950,440,825,559.35,248.6,5904.25);
+/*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-04-24 22:40:37

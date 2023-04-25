@@ -94,7 +94,10 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE sp_obtenerActividad()
 BEGIN
-	SELECT * FROM Actividad;
+    SELECT a.idEmp, e.nombre, e.apellidos, a.idRol, a.mes, a.anio, a.horasTrabajadas, 
+		   a.numEntregas, a.sueldoBase, a.bonoEntregas, a.bonoHoras, a.isr, a.vales, a.sueldoNeto
+	FROM Actividad a 
+	INNER JOIN Empleados e ON e.idEmp = a.idEmp;
 END //
 DELIMITER ;
 

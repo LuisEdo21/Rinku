@@ -1,7 +1,12 @@
 body
 {
     font-size: 16px;
-    padding: 1em 3em;
+    padding: 2em 3em;
+}
+
+#footerProperties
+{
+    padding: 0 7em
 }
 
 .title-centered
